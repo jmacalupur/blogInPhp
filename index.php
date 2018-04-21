@@ -23,7 +23,7 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
 		</div>
 		<div class="row">
 				<div class="col-md-8">
-					<!-- <?php 
+					<!-- <?phpa  
 						// foreach ($blogPosts as $blogPosts) {
 						// echo '<div class="blog-post">';
 						// echo '<h2>'.$blogPosts['title'].'</h2>';

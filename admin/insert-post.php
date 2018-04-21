@@ -1,6 +1,19 @@
 
 <?php 
 include_once '../config.php';
+ 
+$result = false;
+
+if (!empty($_POST)) {
+	$sql = 'INSERT INTO blog_posts (title, content) VALUES (:title, :content)';
+	$query = $pdo->prepare($sql);
+	$result = $query->execute([
+		'title' => $_POST['title'],
+		'content' => $_POST['content']
+	]);
+
+}
+
  ?>
 
 <!DOCTYPE html>
@@ -21,14 +34,21 @@ include_once '../config.php';
 				
 				<div class="col-md-8">
 				<h2>New Posts</h2>
-				<a class ="btn btn-default" href="posts.php">Back</a>
+				<p>
+					<a class ="btn btn-outline-primary" href="posts.php">Back</a>
+				</p>
+				<?php 
+					if($result) {
+						echo '<div class="alert-success">Post Saved</div>';
+					}
+				 ?>
 
 				<form action="insert-post.php" method="post">
 					<div class="form-group">
 						<label for="inputTitle">Title</label>
 						<input type="text" class="form-control" name="title" id="inputTitle">
 					</div>
-					<textarea class="form-control" name="content	id="inputContent rows="5"></textarea>
+					<textarea class="form-control" name="content"	id="inputContent rows="5"></textarea>
 					<br>
 					<input class="btn btn-primary" type="submit" name="Save">
 				</form>				
