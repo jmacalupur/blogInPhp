@@ -1,10 +1,6 @@
 
 <?php 
-include_once 'config.php';
-$query = $pdo->prepare('SELECT * FROM blog_posts ORDER BY id DESC');
-$query->execute();
-
-$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
+include_once '../config.php';
  ?>
 
 <!DOCTYPE html>
@@ -22,34 +18,20 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
 			</div>
 		</div>
 		<div class="row">
+				
 				<div class="col-md-8">
-					<!-- <?php 
-						// foreach ($blogPosts as $blogPosts) {
-						// echo '<div class="blog-post">';
-						// echo '<h2>'.$blogPosts['title'].'</h2>';
-						// echo '<p>Apr 20, 2018 <a href="">Alex</a></p>';
-						// echo '<div class="blog-post-image">';
-						// echo '<img src="images/atronauta.jpg" alt="">';
-						// echo '</div>';
-						// echo '<div calass="blog-post-content">';
-						// echo $blogPosts['content'];
-						// echo '</div>';
-						// echo '</div>';
-						// } Este es la clase del profesor
-					 ?> -->
-					
-				 	<?php foreach ($blogPosts as $blogPosts): ?>
-					<div class="blog-post">
-						<h2><?= $blogPosts['title'] ?> </h2>
-							<p>Apr 20, 2018 <a href="">Alex</a></p>
-								<div class="blog-post-image">
-									<img src="images/atronauta.jpg" alt="">
-								</div>
-								<div class="blog-post-content">
-									<?= $blogPosts['content'] ?>
-								</div>
+				<h2>New Posts</h2>
+				<a class ="btn btn-default" href="posts.php">Back</a>
+
+				<form action="insert-post.php" method="post">
+					<div class="form-group">
+						<label for="inputTitle">Title</label>
+						<input type="text" class="form-control" name="title" id="inputTitle">
 					</div>
-					<?php endforeach ?>
+					<textarea class="form-control" name="content	id="inputContent rows="5"></textarea>
+					<br>
+					<input class="btn btn-primary" type="submit" name="Save">
+				</form>				
 				</div>
 				<div class="col-md-4">
 					Sidebar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
