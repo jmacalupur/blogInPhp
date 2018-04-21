@@ -1,4 +1,12 @@
 
+<?php 
+include_once 'config.php';
+$query = $pdo->prepare('SELECT * FROM blog_posts ORDER BY id DESC');
+$query->execute();
+
+$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,39 +23,24 @@
 		</div>
 		<div class="row">
 				<div class="col-md-8">
-					<div class="blog-post">
-						<h2>Sample title</h2>
-						<p>Apr 20, 2018 <a href="">Alex</a></p>
-						<div class="blog-post-image">
-							<img src="images/atronauta.jpg" alt="">
-						</div>
-						<div class="blog-post-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</div>
-					</div>
-					<div class="blog-post">
-						<h2>Sample title</h2>
-						<p>Apr 20, 2018 <a href="">Alex</a></p>
-						<div class="blog-post-image">
-							<img src="images/atronauta.jpg" alt="">
-						</div>
-						<div class="blog-post-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</div>
-					</div>
-					<div class="blog-post">
-						<h2>Sample title</h2>
-						<p>Apr 20, 2018 <a href="">Alex</a></p>
-						<div class="blog-post-image">
-							<img src="images/atronauta.jpg" alt="">
-						</div>
-						<div class="blog-post-content">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</div>
-					</div>
+					<?php 
+						foreach ($blogPosts as $blogPosts) {
+						echo '<div class="blog-post">';
+						echo '<h2>'.$blogPosts['title'].'</h2>';
+						echo '<p>Apr 20, 2018 <a href="">Alex</a></p>';
+						echo '<div class="blog-post-image">';
+						echo '<img src="images/atronauta.jpg" alt="">';
+						echo '</div>';
+						echo '<div class="blog-post-content">';
+						echo $blogPosts['content'];
+						echo '</div>';
+						echo '</div>';
+						}
+					 ?>
+					
 				</div>
 				<div class="col-md-4">
-					Sidebar
+					Sidebar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</div>
 		</div>
 		<div class="row">
