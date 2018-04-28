@@ -7,7 +7,21 @@ require_once '../vendor/autoload.php';
 include_once '../config.php';
 
 
+$baseDir = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+
+$baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . $baseDir;
+define('BASE_URL', $baseUrl);
+
+
+
 $route = $_GET['route'] ?? '/';
+
+function render($fileName, $params = []) {
+	ob_start(); //va a almacenar salida internamente
+	extract($params);
+	include $fileName;
+	return ob_get_clean(); //todo lo que se hizo antes de esta línea va a regresar como si fuera una cadena
+} 
 
 use Phroute\Phroute\RouteCollector;
 
@@ -19,7 +33,8 @@ $query->execute();
 
 $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
 
-include '../views/index.php';
+return render('../views/index.php',['blogPosts' => $blogPosts]);
+
 });
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
