@@ -1,12 +1,4 @@
 
-<?php 
-
-$query = $pdo->prepare('SELECT * FROM blog_posts ORDER BY id DESC');
-$query->execute();
-
-$blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
- ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,34 +16,25 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
 		<div class="row">
 				
 				<div class="col-md-8">
-					<h2>Posts</h2>
-					<a class ="btn btn-primary" href="insert-post.php">New Post</a>
-					<table class="table">
-						<tr>
-							<th>Title</th>
-							<th>Edit</th>
-							<th>Delete</th>
-						</tr>
-						<!-- <?php 
-						// foreach ($blogPosts as $blogPost) {
-						// 	echo '<tr>';
-						// 	echo '<td>' . $blogPost['title'] . '</td>';
-						// 	echo '<td>Edit</td>';
-						// 	echo '<td>Delete</td>';
+				<h2>New Posts</h2>
+				<p>
+					<a class ="btn btn-outline-primary" href="<?php echo BASE_URL; ?>admin/posts">Back</a>
+				</p>
+				<?php 
+					if(isset($result) && $result) {
+						echo '<div class="alert-success">Post Saved</div>';
+					}
+				 ?>
 
-						// 	echo '</tr>';
-						// } Modelo como en la clase.
-				 	 ?>	 -->
-
-				 	 <?php foreach ($blogPosts as $blogPost): ?>
-						<tr>
-						<td> <?= $blogPost['title'] ?></td>
-						<td>Edit</td>
-						<td>Delete</td>
-						</tr>
-					<?php endforeach?>	
-					</table>
-				 	
+				<form  method="post">
+					<div class="form-group">
+						<label for="inputTitle">Title</label>
+						<input type="text" class="form-control" name="title" id="inputTitle">
+					</div>
+					<textarea class="form-control" name="content"	id="inputContent rows="5"></textarea>
+					<br>
+					<input class="btn btn-primary" type="submit" name="Save">
+				</form>				
 				</div>
 				<div class="col-md-4">
 					Sidebar: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -61,7 +44,7 @@ $blogPosts = $query->fetchAll(PDO::FETCH_ASSOC);
 			<div class="col-md-12">
 				<footer>
 				This is a footer<br>
-				<a href="../admin/index.php">Admin Panel</a>
+				<a href="admin/index.php">Admin Panel</a>
 			</footer>
 			</div>
 			
