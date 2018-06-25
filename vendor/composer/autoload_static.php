@@ -122,9 +122,12 @@ class ComposerStaticInitd2875d8c491c143620ccce025d78361b
     public static $classMap = array (
         'App\\Controllers\\Admin\\IndexController' => __DIR__ . '/../..' . '/app/controllers/admin/IndexController.php',
         'App\\Controllers\\Admin\\PostController' => __DIR__ . '/../..' . '/app/controllers/admin/PostController.php',
+        'App\\Controllers\\Admin\\UserController' => __DIR__ . '/../..' . '/app/controllers/admin/UserController.php',
+        'App\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/controllers/AuthController.php',
         'App\\Controllers\\BaseController' => __DIR__ . '/../..' . '/app/controllers/BaseController.php',
         'App\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/controllers/IndexController.php',
         'App\\Models\\BlogPost' => __DIR__ . '/../..' . '/app/models/BlogPost.php',
+        'App\\Models\\User' => __DIR__ . '/../..' . '/app/models/User.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\CarbonPeriod' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonPeriod.php',

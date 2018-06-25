@@ -6,15 +6,7 @@
 		<a class ="btn btn-outline-primary" href="{{'admin/posts' | url }}">Back</a>
 	</p>
 	{%if errors %}
-	<div class="alert alert-danger">
-		<ul>
-			{%for input, messages in errors%}
-				{%for message in messages%}
-				<li>{{input}}: {{message}}</li>
-				{%endfor%}
-			{%endfor%}
-		</ul>
-	</div>
+		{% include('partial/errors.twig')%}
 	{%endif%}
 	{%if result %}
 		<div class="alert-success">Post Saved</div>
@@ -26,7 +18,7 @@
 			<label for="inputTitle">Title</label>
 			<input type="text" class="form-control" name="title" id="inputTitle">
 		</div>
-		<textarea class="form-control" name="content"	id="inputContent rows="5"></textarea>
+		<textarea class="form-control" name="content"	id="inputContent" rows="5"></textarea>
 		<br>
 		<input class="btn btn-primary" type="submit" name="Save">
 	</form>	
