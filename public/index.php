@@ -48,16 +48,16 @@ $router->filter('auth', function() {
 		header('Location: ' . BASE_URL . 'auth/login');
 		return false;
 	}
-})
+});
 
 $router->controller('/auth', App\Controllers\AuthController::class);
 
-$router->group(['before' => 'auth'], function($router) {
+$router->group(['before' => 'auth'], function ($router) {
 	$router->controller('/admin', App\Controllers\Admin\IndexController::class);
 	$router->controller('/admin/posts', App\Controllers\Admin\PostController::class);
 	$router->controller('/admin/users', App\Controllers\Admin\UserController::class);
 
-})
+});
 
 $router->controller('/', App\Controllers\IndexController::class);
 
