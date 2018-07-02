@@ -20,7 +20,7 @@ class AuthController extends BaseController {
 			$user = User::where('email', $_POST['email'])->first();
 			if ($user) {
 				if (password_verify($_POST['password'], $user->password)) {
-					$_SESSION['UserId'] = $user->id;
+					$_SESSION['userId'] = $user->id;
 					header('Location:' . BASE_URL . 'admin');
 					return null;
 				}
@@ -35,7 +35,10 @@ class AuthController extends BaseController {
 		
 	}
 
-
+public function getLogout() {
+	unset($_SESSION['userId']);
+	header('Location'. BASE_URL . 'auth/login');
+}
 
 
 
