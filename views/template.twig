@@ -1,20 +1,20 @@
 
 {% extends "layout.twig" %}
 {% block content %}
-		{% for blogPosts in blogPosts %}
+			{% for blogPosts in blogPosts %}
 	<div class= "blog-post">
-		<h2 ><a href="{{ 'template/' | url }}{{ blogPosts.id }}">{{ blogPosts.title }}</a></h2>
+		<a href="{{'' | url }}">Back</a>
+		<h2 >{{ blogPosts.title }}</h2>
 		<p>Apr 20, 2018 <a href="">Alex</a></p>
 		
 			{% if blogPosts.img_url %}
 				<div class="blog-post-image">
-				<img src="{{blogPosts.img_url}}" alt="">
+				<img src="{{blogPosts.img_url}}">
 				</div>
 			{% endif %}
 		<div class="blog-post-content">
-			{{blogPosts.content}}
+			{{ blogPosts.content }}
 		</div>
 	</div>
 	{% endfor %}
-
 {% endblock %}

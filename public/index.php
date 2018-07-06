@@ -52,6 +52,8 @@ $router->filter('auth', function() {
 
 $router->controller('/auth', App\Controllers\AuthController::class);
 
+
+
 $router->group(['before' => 'auth'], function ($router) {
 	$router->controller('/admin', App\Controllers\Admin\IndexController::class);
 	$router->controller('/admin/posts', App\Controllers\Admin\PostController::class);
@@ -60,6 +62,7 @@ $router->group(['before' => 'auth'], function ($router) {
 });
 
 $router->controller('/', App\Controllers\IndexController::class);
+$router->controller('/template', App\Controllers\TemplateController::class);
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $route);
