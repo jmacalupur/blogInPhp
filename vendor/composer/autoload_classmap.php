@@ -12,7 +12,7 @@ return array(
     'App\\Controllers\\AuthController' => $baseDir . '/app/controllers/AuthController.php',
     'App\\Controllers\\BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'App\\Controllers\\IndexController' => $baseDir . '/app/controllers/IndexController.php',
-    'App\\Logg' => $baseDir . '/app/Log.php',
+    'App\\Log' => $baseDir . '/app/Log.php',
     'App\\Models\\BlogPost' => $baseDir . '/app/models/BlogPost.php',
     'App\\Models\\User' => $baseDir . '/app/models/User.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

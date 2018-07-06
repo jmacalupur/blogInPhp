@@ -27,7 +27,7 @@ class AuthController extends BaseController {
 
 					Log::logInfo('Login userId: ' . $user->id);
 
-					header('Location:' . BASE_URL . 'admin');
+					header('Location: ' . BASE_URL . 'admin');
 					return null;
 				}
 			}
@@ -44,7 +44,7 @@ class AuthController extends BaseController {
 public function getLogout() {
 	Log::logError('Logout userId:' . $_SESSION['userId']);
 	unset($_SESSION['userId']);
-	header('Location'. BASE_URL . 'auth/login');
+	header('Location: '. BASE_URL . 'auth/login');
 }
 
 
